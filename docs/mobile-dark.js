@@ -1,7 +1,7 @@
 'use strict';
 
 //  Define new constants
-const toogleButton = document.querySelector('.toggle-button');
+const toggleButton = document.querySelector('.toggle-button');
 const moonImage = document.querySelector('.moon-img');
 const sunImage = document.querySelector('.sun-img');
 const mainContainer = document.querySelector('.main-container');
@@ -14,17 +14,23 @@ const linearGradient = function () {
   return `linear-gradient(180deg, #040918 0%, #091540 100%)`;
 };
 
-const whiteColor = function () {
-  return `white`;
-};
-
 // Toggle button
-toogleButton.addEventListener('click', function () {
-  sunImage.style.display = 'block';
-  moonImage.classList.toggle('sunImage');
 
-  // mainContainer.textContent = `Test ${moonImage ? 'added' : 'removed'} : `;
+let isDark = false;
 
-  mainContainer.style.background = linearGradient();
-  extensionList.style.color = whiteColor();
+toggleButton.addEventListener('click', function () {
+  isDark = !isDark;
+
+  if (isDark) {
+    mainContainer.style.background =
+      'linear-gradient(180deg, #040918 0%, #091540 100%)';
+    extensionList.style.color = 'white';
+    sunImage.style.display = 'block';
+    moonImage.style.display = 'none';
+  } else {
+    mainContainer.style.background = 'white';
+    extensionList.style.color = 'black';
+    sunImage.style.display = 'none';
+    moonImage.style.display = 'block';
+  }
 });
